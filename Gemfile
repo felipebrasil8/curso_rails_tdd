@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do

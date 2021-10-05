@@ -1,0 +1,31 @@
+<h1 style="text-align: center;"><%= params[:controller].capitalize %></h1>
+
+<div style="text-align: center; margin-bottom: 25px;">
+	<%= link_to "Novo", new_deck_path %> 
+</div>
+
+<% if flash[:notice] %>
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+<table>
+  <tr>
+    <th width="50%">Nome</th>
+    <th>Total Cards</th>
+    <th>Ações</th>
+  </tr>
+  <% @decks.each do |deck| %>
+	  <tr>
+	    <td><%= deck.name %></td>
+	    <td></td>
+	    <td>
+	    	<%= link_to "Editar", edit_deck_path(deck) %> 
+	    	/ 
+	    	<%= link_to "Deletar", deck, method: :delete, data: { confirm: "Deseja realmente excluir?" } %> 
+	    </td>
+	  </tr>
+	<% end %>
+</table>
