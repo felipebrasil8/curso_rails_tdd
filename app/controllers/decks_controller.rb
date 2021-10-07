@@ -2,7 +2,10 @@ class DecksController < ApplicationController
 	before_action :find_deck, only: [:edit, :update, :destroy]
 
 	def index
-		@decks = Deck.order("created_at DESC")
+		@decks = Deck.left_joins(:cards)
+			.select('decks.*, COUNT(cards.id) as card_count')
+			.group('decks.id')
+			.order("decks.created_at DESC")
 	end
 
 	# GET

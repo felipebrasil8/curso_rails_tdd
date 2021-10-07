@@ -20,7 +20,7 @@
   <% @decks.each do |deck| %>
 	  <tr>
 	    <td><%= deck.name %></td>
-	    <td></td>
+	    <td><%= deck.card_count %></td>
 	    <td>
 	    	<%= link_to "Editar", edit_deck_path(deck) %> 
 	    	/ 
