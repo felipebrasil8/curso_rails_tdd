@@ -19,7 +19,7 @@ class DecksController < ApplicationController
     if @deck.save
       redirect_to decks_path, notice: 'Deck cadastrado com sucesso.'
     else
-       redirect_to decks_path, error: @deck.errors
+       render :new
     end
 	end
 
@@ -32,7 +32,7 @@ class DecksController < ApplicationController
     if @deck.update(deck_params)
       redirect_to decks_path, notice: 'Deck atualizado com sucesso.'
     else
-       redirect_to decks_path, error: @deck.errors
+       render :edit
     end
 	end
 

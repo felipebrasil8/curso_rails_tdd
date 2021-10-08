@@ -4,6 +4,17 @@
 	<%= link_to "Voltar", decks_path %> 
 </div>
 
+<% if @deck.errors.any? %>
+	<div class="alert">
+		<span class="closebtn">&times;</span>  
+			<ul>
+			  <% @deck.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+		</ul>
+	</div>
+<% end %>
+
 <div class="form_deck">
 <%= form_for @deck do |f| %>
 	<%= f.label :name, 'Nome' %>
