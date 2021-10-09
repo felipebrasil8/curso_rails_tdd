@@ -5,3 +5,25 @@
     <%= card.title %>
   </li>
 <% end %>
+
+<script>
+async function getPais(pais,c) {
+ let response = await fetch(`https://servicodados.ibge.gov.br/api/v1/paises/${pais}`);
+ let userData = await response.json();
+ console.log(userData[0].nome, c);
+ return userData[0].nome;
+}
+
+console.log(Promise.all([
+	getPais('BR',1), 
+	getPais('US',2),
+	getPais('JP',3),
+	getPais('AT',4),
+	getPais('',5),
+	getPais('UY',6),
+	getPais('TL',7),
+	getPais('PH',8),
+	getPais('MG',9),
+	]
+))
+</script>

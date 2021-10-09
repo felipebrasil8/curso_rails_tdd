@@ -1,0 +1,40 @@
+<h1 style="text-align: center;"><%= params[:controller].capitalize %></h1>
+
+<div style="text-align: center; margin-bottom: 25px;">
+	<%= link_to "Voltar", cards_path %> 
+</div>
+
+<% if @card.errors.any? %>
+	<div class="alert">
+		<span class="closebtn">&times;</span>  
+			<ul>
+			  <% @card.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+		</ul>
+	</div>
+<% end %>
+
+<div class="form_deck">
+<%= form_for @card do |f| %>
+	<%= f.label :image, 'Card' %>
+	<%= f.file_field :image %>
+	<br><br>
+	<%= f.label :title, 'Titulo' %>
+	<%= f.text_field :title %>
+	<br><br>
+	<%= f.label :description, 'Descrição' %>
+	<%= f.text_area :description %>
+	<br><br>
+	<%= f.label :nivel, 'Nivel' %>
+	<%= f.text_field :nivel %>
+	<br><br>
+	<%= f.label :atk, 'Ataque' %>
+	<%= f.number_field :atk %>
+	<br><br>
+	<%= f.label :def, 'Defesa' %>
+	<%= f.number_field :def %>
+	<br><br>
+	<%= f.submit 'Cadastrar' %>
+<% end %>
+<div>

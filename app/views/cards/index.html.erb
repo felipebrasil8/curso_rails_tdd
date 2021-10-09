@@ -1,0 +1,36 @@
+<h1 style="text-align: center;"><%= params[:controller].capitalize %></h1>
+
+<div style="text-align: center; margin-bottom: 25px;">
+	<%= link_to "Novo", new_card_path %> 
+</div>
+
+<% if flash[:notice] %>
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+<table>
+  <tr>
+    <th>Imagem</th>
+    <th>Titulo</th>
+    <th>ATK</th>
+    <th>DEF</th>
+    <th>Ações</th>
+  </tr>
+  <% @cards.each do |card| %>
+	  <tr>
+	    <td>
+  		<%= image_tag url_for(card.image), style: 'height:100px;width:auto;' %></td>
+	    <td><%= card.title %></td>
+	    <td><%= card.atk %></td>
+	    <td><%= card.def %></td>
+	    <td>
+	    	<%= link_to "Editar", edit_card_path(card) %> 
+	    	/ 
+	    	<%= link_to "Deletar", card, method: :delete, data: { confirm: "Deseja realmente excluir?" } %> 
+	    </td>
+	  </tr>
+	<% end %>
+</table>
